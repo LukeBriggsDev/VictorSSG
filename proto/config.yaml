@@ -1,0 +1,29 @@
+{
+  "title": "Title",
+  "navbar": [
+    {
+      "name": "Home",
+      "url": ""
+    },
+    {
+      "name":  "Posts",
+      "url": "posts"
+    },
+    {
+      "name": "Projects",
+      "url": "projects"
+    },
+    {
+      "name": "About",
+      "url": "about"
+    }
+  ],
+  "index": {
+    "socialLinks" : { # Usernames of social platforms
+      "linkedin": "",
+      "github": "",
+      "gitlab": "",
+      "twitter": ""
+    }
+  }
+}

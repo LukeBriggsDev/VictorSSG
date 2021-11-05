@@ -3,7 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ title }}</title>
+    <link rel="stylesheet" href="/stylesheets/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
+    <nav>
+        <div class="pageLinks">
+            {% for link in navbar %}
+            <a href="{{ link["url"] }}">{{ link["name"] }}</a>
+            {% endfor %}
+        </div>
+    </nav>
+    <div class="splash">
+        <h1>{{ title }}</h1>
+        <ul class="socialLinks">
+            {% for link in social_links %}
+                <li><a href="https://{{ link.link }}"><i class="fa {{ link.site.logo }}">{{ link.site.url }}</i></a></li>
+            {% endfor %}
+        </ul>
+    </div>
 <body>
 
 </body>
