@@ -54,7 +54,8 @@ def build():
                     social_links.append(SocialLink(DefaultSites.TWITTER,"LukeBriggsDec"))
 
         # Copy stylesheets
-        shutil.copytree(os.path.join(os.path.dirname(__file__), "stylesheets"), os.path.join(public_dir, "stylesheets"))
+        shutil.copytree(os.path.join(os.path.dirname(__file__), "assets"), os.path.join(public_dir,
+                                                                                                    "assets"))
         print([link.link for link in social_links])
         # Build index
         index_page = jinja_env.get_template("index.html")
