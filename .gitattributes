@@ -1,1 +1,4 @@
 assets/stylesheets/font-awesome-4.7.0/* linguist-vendored
+assets/stylesheets/font-awesome-4.7.0/css/* linguist-vendored
+assets/stylesheets/font-awesome-4.7.0/scss/* linguist-vendored
+assets/stylesheets/font-awesome-4.7.0/less/* linguist-vendored
