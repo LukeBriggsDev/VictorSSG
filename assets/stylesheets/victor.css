@@ -72,6 +72,7 @@ a {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 0;
 }
 
 .splash-title{
@@ -101,6 +102,7 @@ a {
         border-radius: 10px;
         text-align: center;
         transition: 0.3s;
+        z-index: 7;
         box-shadow:
             0 10px 27px rgba(0, 0, 0, 0.05);
     }
@@ -132,3 +134,27 @@ a {
 }
 
 
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #252525;
+    }
+
+    .nav-link {
+        color: white;
+    }
+
+    .splash-title {
+        color: white;
+    }
+    .social-link i {
+        color: white;
+    }
+
+    .nav-menu {
+        background-color: #252525;
+    }
+
+    .bar {
+        background-color: white;
+    }
+}
