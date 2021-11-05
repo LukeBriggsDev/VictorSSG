@@ -57,7 +57,7 @@ def build():
         shutil.copytree(os.path.join(os.path.dirname(__file__), "stylesheets"), os.path.join(public_dir, "stylesheets"))
         print([link.link for link in social_links])
         # Build index
-        index_page = jinja_env.get_template("base.html")
+        index_page = jinja_env.get_template("index.html")
         with open(os.path.join(public_dir, "index.html"), "w") as f:
             f.write(index_page.render(title=CONFIG['title'], navbar=CONFIG["navbar"], social_links=social_links))
 
