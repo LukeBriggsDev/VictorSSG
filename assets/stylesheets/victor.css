@@ -1,7 +1,9 @@
 html, body {
-    font-family: "Libre Baskerville", serif;
     height: 100%;
     width: 100%;
+    color: black;
+    line-height: 2rem;
+    font-family: system-ui,-apple-system,BlinkMacSystemFont,PingFang SC,Microsoft YaHei UI,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
 }
 * {
     margin: 0;
@@ -15,10 +17,35 @@ li {
 
 a {
     text-decoration: none;
+    color: #3285bd;
+}
+
+h1 {
+    line-height: 4rem;
+    font-family: "Libre Baskerville", serif;
+}
+
+h2 {
+    line-height: 3.5rem;
+    font-family: "Libre Baskerville", serif;
+}
+h3 {
+    font-family: "Libre Baskerville", serif;
+}
+h4 {
+    font-family: "Libre Baskerville", serif;
+}
+h5 {
+    font-family: "Libre Baskerville", serif;
+}
+p {
+    margin-bottom: 1rem;
+    font-size: 1.15rem;
 }
 
 .header{
     border-bottom: 1px solid #E2E8F0;
+    width: 100%;
 }
 
 .navbar {
@@ -26,6 +53,7 @@ a {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 1.5rem;
+    width: 100%;
 }
 
 .hamburger {
@@ -58,8 +86,8 @@ a {
     color: #475569;
 }
 
-.nav-link:hover{
-    color: limegreen;
+a:hover{
+    color: #46b4ff;
 }
 
 .nav-logo {
@@ -67,7 +95,7 @@ a {
     font-weight: 500;
 }
 
-.splash {
+.center {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -75,7 +103,7 @@ a {
     z-index: 0;
 }
 
-.splash-title{
+.site-title{
     margin-bottom: 0.5rem;
     font-size: 3rem;
 }
@@ -89,8 +117,10 @@ a {
     color: #475569;
     font-size: 2.1rem;
 }
-.social-link :hover{
-    color: limegreen;
+
+
+.social-link i :hover{
+    color: #46b4ff;
 }
 
 @media only screen and (max-width: 768px) {
@@ -139,17 +169,21 @@ a {
 @media (prefers-color-scheme: dark) {
     body {
         background-color: #252525;
+        color: white;
     }
 
     .nav-link {
         color: white;
     }
 
-    .splash-title {
+    .site-title {
         color: white;
     }
     .social-link i {
         color: white;
+    }
+    .social-link :hover{
+        color: #46b4ff;;
     }
 
     .nav-menu {

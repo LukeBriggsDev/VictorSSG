@@ -66,7 +66,7 @@ def build():
         # Build index
         index_page = jinja_env.get_template("index.html")
         with open(os.path.join(public_dir, "index.html"), "w") as f:
-            f.write(index_page.render(title=CONFIG['title'], navbar=CONFIG["navbar"], social_links=social_links))
+            f.write(index_page.render(site_title=CONFIG['title'], navbar=CONFIG["navbar"], social_links=social_links))
 
         # Build content
         content_files = pathlib.Path(content_dir).glob("**/*.md")
@@ -94,8 +94,8 @@ def build():
                     break
 
                 metadata = yaml.safe_load(yaml_data)
-                dest.write(mistune.markdown(text, escape=False))
-
+                template = jinja_env.get_template("info_page.html")
+                dest.write(template.render(site_title=CONFIG["title"], page_title=page.title(),navbar=CONFIG["navbar"], page_content=mistune.markdown(text, escape=False)))
 
     except FileNotFoundError as e:
         print(f"{e.filename} was not found, have you ran init?")
