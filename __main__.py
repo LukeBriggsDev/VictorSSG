@@ -72,8 +72,13 @@ def build():
         content_files = pathlib.Path(content_dir).glob("**/*.md")
         for file in content_files:
             page = '.'.join(file.name.split('.')[:-1])
-            # Set file relative to content_dir and change file extension to .html
-            html_export = file.parent.relative_to(content_dir).parent.joinpath(f"{page}.html")
+            # Place html in directory with name of page
+            directory = file.parent.relative_to(content_dir).parent.joinpath(page)
+            os.makedirs(os.path.join(public_dir, directory), exist_ok=True)
+            # Copy original file to be accessed at index.md
+            shutil.copy(file, directory)
+            # Export file
+            html_export = directory.joinpath("index.html")
             # Convert markdown (without yaml header) to html
             with open(file, "r") as src, open(os.path.join(public_dir, html_export), "w") as dest:
                 markdown = src.read()
