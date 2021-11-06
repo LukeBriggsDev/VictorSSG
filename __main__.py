@@ -4,10 +4,10 @@ import sys
 import os
 import shutil
 from typing import Tuple
-
+import pathlib
 import yaml
 from jinja2 import Environment, PackageLoader, select_autoescape
-from .CONSTANTS import content_dir, static_dir, jinja_env, public_dir, config_file
+from .CONSTANTS import content_dir, static_dir, jinja_env, public_dir, config_file, archetypes_dir
 from .social.social import DefaultSites, SocialLink
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 
@@ -17,8 +17,11 @@ def init():
     # Copy config files
     shutil.copy(os.path.join(os.path.dirname(__file__), "proto", "config.yaml"), os.getcwd())
 
-    # Create directory if not exist
-    for directory in [content_dir, static_dir, public_dir]:
+    # Copy archetype
+    shutil.copytree(os.path.join(os.path.dirname(__file__), "proto", "archetypes"), os.path.join(os.getcwd(), "archetypes"))
+
+    # Create directories if not exist
+    for directory in [content_dir, static_dir, public_dir, archetypes_dir]:
         if not os.path.exists(directory):
             os.mkdir(directory)
 
@@ -45,13 +48,13 @@ def build():
         for link in config_links:
             if config_links[link] != "":
                 if link == "linkedin":
-                    social_links.append(SocialLink(DefaultSites.LINKEDIN, "luke-briggs"))
+                    social_links.append(SocialLink(DefaultSites.LINKEDIN, config_links["linkedin"]))
                 elif link == "github":
-                    social_links.append(SocialLink(DefaultSites.GITHUB, "LukeBriggsDev"))
+                    social_links.append(SocialLink(DefaultSites.GITHUB, config_links["github"]))
                 elif link == "gitlab":
-                    social_links.append(SocialLink(DefaultSites.GITLAB, "lukebriggs"))
+                    social_links.append(SocialLink(DefaultSites.GITLAB, config_links["gitlab"]))
                 elif link == "twitter":
-                    social_links.append(SocialLink(DefaultSites.TWITTER,"LukeBriggsDec"))
+                    social_links.append(SocialLink(DefaultSites.TWITTER, config_links["twitter"]))
 
         # Copy stylesheets
         shutil.copytree(os.path.join(os.path.dirname(__file__), "assets"), os.path.join(public_dir,
@@ -96,11 +99,15 @@ def help():
         "help": "display this message",
         "init": "initialise directory for victor project",
         "build": "build directory",
-        "serve": "start basic web server"
+        "serve": "start basic web server",
+        "new FILE": "create a new file with content of archetype"
     }
     print("Available commands:")
+    # Whitespace between command and description
+    col_gap = 16
     for command in help_messages.keys():
-        print(f"  {command}\t\t{help_messages[command]}")
+        print(f"  {command}{' ' * (col_gap - len(command))}{help_messages[command]}")
+
 
 # Program arguments
 if len(sys.argv) == 1:
@@ -112,6 +119,34 @@ elif sys.argv[1] == "init":
 elif sys.argv[1] == "serve":
     serve()
 
+elif sys.argv[1] == "new":
+    if len(sys.argv) != 3:
+        print("No path detected. Please run \n`new path/to/file.md`")
+        exit(0)
+
+    new_file = os.path.join(content_dir, sys.argv[2])
+
+    # Make parent directories
+    os.makedirs(os.path.dirname(new_file), exist_ok=True)
+
+    # Copy correct archetype for extension
+    file_ext = os.path.basename(new_file).split(".")[-1]
+
+    try:
+        if os.path.exists(new_file):
+            raise shutil.SameFileError
+        shutil.copy(os.path.join(archetypes_dir, f"default.{file_ext}"), new_file)
+
+    except FileNotFoundError:
+        # archetype for file type does not exist
+        pathlib.Path(new_file).touch()
+
+    except shutil.SameFileError:
+        print("File already exists")
+        exit()
+
+
 else:
     help()
+
 

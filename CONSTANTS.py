@@ -6,6 +6,7 @@ from jinja2 import Environment, PackageLoader, select_autoescape
 content_dir = os.path.join(os.getcwd(), "content")
 static_dir = os.path.join(os.getcwd(), "static")
 public_dir = os.path.join(os.getcwd(), "public")
+archetypes_dir = os.path.join(os.getcwd(), "archetypes")
 
 config_file = os.path.join(os.getcwd(), "config.yaml")
 
