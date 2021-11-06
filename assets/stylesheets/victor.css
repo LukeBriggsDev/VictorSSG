@@ -77,14 +77,16 @@ a {
 
 .splash-title{
     margin-bottom: 0.5rem;
+    font-size: 3rem;
 }
 
 .social-link {
     display: inline-block;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
 }
 .social-link i {
-    color: black;
+    color: #475569;
     font-size: 2.1rem;
 }
 .social-link :hover{

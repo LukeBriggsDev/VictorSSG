@@ -3,11 +3,15 @@ import socketserver
 import sys
 import os
 import shutil
+from datetime import datetime
 from typing import Tuple
+import regex as re
 import pathlib
 import yaml
 from jinja2 import Environment, PackageLoader, select_autoescape
-from .CONSTANTS import content_dir, static_dir, jinja_env, public_dir, config_file, archetypes_dir
+import mistune
+from .CONSTANTS import content_dir, static_dir, jinja_env, public_dir, config_file, archetypes_dir, yaml_re, eval_re, \
+    code_re, header_re
 from .social.social import DefaultSites, SocialLink
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 
@@ -59,11 +63,33 @@ def build():
         # Copy stylesheets
         shutil.copytree(os.path.join(os.path.dirname(__file__), "assets"), os.path.join(public_dir,
                                                                                                     "assets"))
-        print([link.link for link in social_links])
         # Build index
         index_page = jinja_env.get_template("index.html")
         with open(os.path.join(public_dir, "index.html"), "w") as f:
             f.write(index_page.render(title=CONFIG['title'], navbar=CONFIG["navbar"], social_links=social_links))
+
+        # Build content
+        content_files = pathlib.Path(content_dir).glob("**/*.md")
+        for file in content_files:
+            page = '.'.join(file.name.split('.')[:-1])
+            # Set file relative to content_dir and change file extension to .html
+            html_export = file.parent.relative_to(content_dir).parent.joinpath(f"{page}.html")
+            # Convert markdown (without yaml header) to html
+            with open(file, "r") as src, open(os.path.join(public_dir, html_export), "w") as dest:
+                markdown = src.read()
+
+                yaml_data = re.findall(yaml_re, markdown)[0]
+                header = re.findall(header_re, markdown)[0]
+                text = markdown.replace(header, "")
+
+                # Evaluate python in yaml fields and replace
+                for match in re.finditer(eval_re, yaml_data):
+                    replacement = eval(match.group())
+                    yaml_data = re.sub(code_re, replacement, yaml_data)
+                    break
+
+                metadata = yaml.safe_load(yaml_data)
+                dest.write(mistune.markdown(text, escape=False))
 
 
     except FileNotFoundError as e:
