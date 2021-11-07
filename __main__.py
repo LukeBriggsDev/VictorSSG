@@ -92,7 +92,6 @@ def build():
                 yaml_data = re.findall(yaml_re, markdown)[0]
                 header = re.findall(header_re, markdown)[0]
                 text = markdown.replace(header, "")
-
                 metadata = yaml.safe_load(yaml_data)
                 document = MarkdownDocument(path=directory.joinpath(file.name), markdown=text, metadata=metadata)
                 documents.append(document)

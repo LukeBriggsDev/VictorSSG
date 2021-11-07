@@ -21,9 +21,12 @@ class MarkdownDocument:
         """
         self.path = path
         self.title = metadata["title"]
-        self.markdown = markdown
-        self.html = mistune.markdown(self.markdown, escape=False)
         self.featured_image = metadata["featuredImage"]
+        # Add featured image and title to top of post
+        featured_image = f"<img class='post-hero' src='{self.featured_image}' alt='{self.title}'/>" if self.featured_image != "" and \
+                                                                                     self.featured_image is not None else ""
+        self.markdown = markdown
+        self.html = featured_image + f"<h1 class='post-title'>{self.title}</h1>" + mistune.markdown(self.markdown, escape=False)
         self.author = metadata["author"]
         try:
             self.date = metadata["date"]
@@ -39,9 +42,6 @@ class MarkdownDocument:
         except KeyError:
             self.categories = []
 
-        try:
-            self.description = metadata["description"]
-        except KeyError:
-            desc_length = 280 if len(self.markdown) > 280 else len(self.markdown)
-            self.description = ''.join([char for char in self.markdown[:desc_length] if char.isalnum() or char in "\"\'“” .,!?:;()[]-\r\n"]) + "..."
+        desc_length = 280 if len(self.markdown) > 280 else len(self.markdown)
+        self.description = ''.join([char for char in self.markdown[:desc_length] if char.isalnum() or char in "\"\'“” .,!?:;()[]/-\r\n"]) + "..."
 

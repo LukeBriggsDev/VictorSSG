@@ -4,8 +4,9 @@
 {% block content %}
     <ul class="post-list">
         {% for post in posts %}
-            <li class="post-item grow">
-                <a href="/{{ post.path.relative_to(public_dir).parent }}">
+            <a href="/{{ post.path.relative_to(public_dir).parent }}">
+                <li class="post-item grow">
+
                     {% if post.featured_image != "" and post.featured_image %}
                         <img class="post-thumbnail" src="{{ post.featured_image }}"  alt="{{ post.description }}" />
                     {% endif %}
@@ -13,8 +14,8 @@
                     <p class="post-excerpt">
                         {{ post.description }}
                     </p>
-                </a>
             </li>
+            </a>
         {% endfor %}
     </ul>
 {% endblock %}
