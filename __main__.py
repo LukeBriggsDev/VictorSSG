@@ -64,16 +64,20 @@ def build():
         # Copy stylesheets
         shutil.copytree(os.path.join(os.path.dirname(__file__), "assets"), os.path.join(public_dir,
                                                                                                     "assets"))
+        # Copy static
+        shutil.copytree(static_dir, public_dir, dirs_exist_ok=True)
+
         # Build index
         index_page = jinja_env.get_template("index.html")
         with open(os.path.join(public_dir, "index.html"), "w") as f:
-            f.write(index_page.render(site_title=CONFIG['title'], navbar=CONFIG["navbar"], social_links=social_links))
+            f.write(index_page.render(CONFIG=CONFIG, social_links=social_links))
 
         # Build content
-        content_files = pathlib.Path(content_dir).glob("**/*.md")
+        content_files = content_dir.glob("**/*.md")
+        # List of converted documents
         documents = []
         for file in content_files:
-            page = '.'.join(file.name.split('.')[:-1])
+            page = file.stem
             # Place html in directory with name of page
             directory = public_dir.joinpath(file.relative_to(content_dir).parent.joinpath(page))
             os.makedirs(directory, exist_ok=True)
@@ -90,16 +94,28 @@ def build():
                 text = markdown.replace(header, "")
 
                 metadata = yaml.safe_load(yaml_data)
+                document = MarkdownDocument(path=directory.joinpath(file.name), markdown=text, metadata=metadata)
+                documents.append(document)
                 template = jinja_env.get_template("info_page.html")
-                dest.write(template.render(site_title=CONFIG["title"], page_title=page.title(),navbar=CONFIG["navbar"], page_content=mistune.markdown(text, escape=False)))
+                dest.write(template.render(CONFIG=CONFIG, page_title=page.title(), page_content=document.html))
 
 
+
+        # Arrange posts page
+        posts = []
+        for document in documents:
+            if public_dir.joinpath("posts") in document.path.parents:
+                posts.append(document)
+        posts.sort(key=lambda x: datetime.timestamp(x.date), reverse=True)
+        # Render post page
+        with open(public_dir.joinpath("posts/index.html"), "w") as post_page:
+            post_page.write(jinja_env.get_template("posts.html").render(CONFIG=CONFIG, page_title="posts", posts=posts, public_dir=public_dir))
 
     except FileNotFoundError as e:
         print(f"{e.filename} was not found, have you ran init?")
 
-    except KeyError as e:
-        print(f"{e.args[0]} was not found in config, please add this field or reinitialise")
+    # except KeyError as e:
+    #     print(f"{e.args[0]} was not found in config, please add this field or reinitialise")
 
 
 class HTTPHandler(SimpleHTTPRequestHandler):

@@ -5,6 +5,9 @@ html, body {
     line-height: 2rem;
     font-family: system-ui,-apple-system,BlinkMacSystemFont,PingFang SC,Microsoft YaHei UI,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
 }
+img {
+    border-radius: 16px;
+}
 * {
     margin: 0;
     padding: 0;
@@ -42,6 +45,9 @@ p {
     margin-bottom: 1rem;
     font-size: 1.15rem;
 }
+
+.grow { transition: all .2s ease-in-out; }
+.grow:hover { transform: scale(1.05); }
 
 .header{
     border-bottom: 1px solid #E2E8F0;
@@ -117,6 +123,50 @@ a:hover{
     font-size: 2.1rem;
 }
 
+.post-thumbnail {
+    width: 480px;
+}
+
+.post-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    margin: auto;
+    margin-top: 2rem;
+}
+
+.post-item {
+    height: fit-content;
+    width: 90%;
+    padding: 2rem 2rem 2rem 2rem;
+    margin-bottom: 3rem;
+    border-radius: 16px;
+    background-color: #f6f5f4;
+}
+
+.post-item a{
+    color: black;
+}
+
+.post-item:hover a{
+    color: #46b4ff;
+}
+
+.post-title {
+    line-height: 2.5rem;
+}
+
+.post-excerpt {
+    color: #475569;
+}
+
+.post-thumbnail {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
 @media only screen and (max-width: 768px) {
     .nav-menu {
         position: fixed;
@@ -167,14 +217,14 @@ a:hover{
     }
 
     .nav-link {
-        color: white;
+        color: lightgrey;
     }
 
     .site-title {
         color: white;
     }
     .social-link i {
-        color: white;
+        color: lightgrey;
     }
     .social-link :hover{
         color: #46b4ff;;
@@ -185,6 +235,14 @@ a:hover{
     }
 
     .bar {
-        background-color: white;
+        background-color: lightgrey;
+    }
+
+    .post-excerpt {
+        color: lightgrey;
+    }
+
+    .post-item a {
+        color: white;
     }
 }

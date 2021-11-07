@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="center">
-    <h1 class="site-title">{{ site_title }}</h1>
+    <h1 class="site-title">{{ CONFIG["title"] }}</h1>
     <ul class="social-link-container">
         {% for link in social_links %}
             <li class="social-link"><a href="https://{{ link.link }}" aria-label="{{ link.site.url }}"><i class="fa {{ link.site.logo }}"></i></a></li>

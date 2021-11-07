@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ page_title }} {% endblock %}
+{% block content %}
+    <ul class="post-list">
+        {% for post in posts %}
+            <li class="post-item grow">
+                <a href="/{{ post.path.relative_to(public_dir).parent }}">
+                    {% if post.featured_image != "" and post.featured_image %}
+                        <img class="post-thumbnail" src="{{ post.featured_image }}"  alt="{{ post.description }}" />
+                    {% endif %}
+                    <h1 class="post-title">{{ post.title }}</h1>
+                    <p class="post-excerpt">
+                        {{ post.description }}
+                    </p>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
