@@ -14,6 +14,7 @@ from .CONSTANTS import content_dir, static_dir, jinja_env, public_dir, config_fi
     code_re, header_re
 from .social.social import DefaultSites, SocialLink
 from http.server import HTTPServer, SimpleHTTPRequestHandler
+from .MarkdownDocument import MarkdownDocument
 
 
 def init():
@@ -70,11 +71,12 @@ def build():
 
         # Build content
         content_files = pathlib.Path(content_dir).glob("**/*.md")
+        documents = []
         for file in content_files:
             page = '.'.join(file.name.split('.')[:-1])
             # Place html in directory with name of page
-            directory = file.parent.relative_to(content_dir).parent.joinpath(page)
-            os.makedirs(os.path.join(public_dir, directory), exist_ok=True)
+            directory = public_dir.joinpath(file.relative_to(content_dir).parent.joinpath(page))
+            os.makedirs(directory, exist_ok=True)
             # Copy original file to be accessed at index.md
             shutil.copy(file, directory)
             # Export file
@@ -90,6 +92,8 @@ def build():
                 metadata = yaml.safe_load(yaml_data)
                 template = jinja_env.get_template("info_page.html")
                 dest.write(template.render(site_title=CONFIG["title"], page_title=page.title(),navbar=CONFIG["navbar"], page_content=mistune.markdown(text, escape=False)))
+
+
 
     except FileNotFoundError as e:
         print(f"{e.filename} was not found, have you ran init?")
@@ -133,6 +137,7 @@ def new():
     try:
         if os.path.exists(new_file):
             raise shutil.SameFileError
+        # Evaluate any inline python in yaml header
         with open(os.path.join(archetypes_dir, f"default.{file_ext}")) as archetype, open(new_file, "w") as dest:
             header = re.findall(header_re, archetype.read())[0]
             new_header = ""
