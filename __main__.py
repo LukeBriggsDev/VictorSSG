@@ -87,12 +87,6 @@ def build():
                 header = re.findall(header_re, markdown)[0]
                 text = markdown.replace(header, "")
 
-                # Evaluate python in yaml fields and replace
-                for match in re.finditer(eval_re, yaml_data):
-                    replacement = eval(match.group())
-                    yaml_data = re.sub(code_re, replacement, yaml_data)
-                    break
-
                 metadata = yaml.safe_load(yaml_data)
                 template = jinja_env.get_template("info_page.html")
                 dest.write(template.render(site_title=CONFIG["title"], page_title=page.title(),navbar=CONFIG["navbar"], page_content=mistune.markdown(text, escape=False)))
@@ -123,6 +117,39 @@ def serve():
         print("\nClosing server")
         exit(0)
 
+def new():
+    if len(sys.argv) != 3:
+        print("No path detected. Please run \n`new path/to/file.md`")
+        exit(0)
+
+    new_file = os.path.join(content_dir, sys.argv[2])
+
+    # Make parent directories
+    os.makedirs(os.path.dirname(new_file), exist_ok=True)
+
+    # Copy correct archetype for extension
+    file_ext = os.path.basename(new_file).split(".")[-1]
+
+    try:
+        if os.path.exists(new_file):
+            raise shutil.SameFileError
+        with open(os.path.join(archetypes_dir, f"default.{file_ext}")) as archetype, open(new_file, "w") as dest:
+            header = re.findall(header_re, archetype.read())[0]
+            new_header = ""
+            # Evaluate python in yaml fields and replace
+            for match in re.finditer(eval_re, header):
+                replacement = eval(match.group())
+                new_header = re.sub(code_re, replacement, header)
+                break
+            dest.write(new_header)
+
+    except FileNotFoundError:
+        # archetype for file type does not exist
+        pathlib.Path(new_file).touch()
+
+    except shutil.SameFileError:
+        print("File already exists")
+        exit()
 
 def help():
     """Provide help message listing commands"""
@@ -151,31 +178,7 @@ elif sys.argv[1] == "serve":
     serve()
 
 elif sys.argv[1] == "new":
-    if len(sys.argv) != 3:
-        print("No path detected. Please run \n`new path/to/file.md`")
-        exit(0)
-
-    new_file = os.path.join(content_dir, sys.argv[2])
-
-    # Make parent directories
-    os.makedirs(os.path.dirname(new_file), exist_ok=True)
-
-    # Copy correct archetype for extension
-    file_ext = os.path.basename(new_file).split(".")[-1]
-
-    try:
-        if os.path.exists(new_file):
-            raise shutil.SameFileError
-        shutil.copy(os.path.join(archetypes_dir, f"default.{file_ext}"), new_file)
-
-    except FileNotFoundError:
-        # archetype for file type does not exist
-        pathlib.Path(new_file).touch()
-
-    except shutil.SameFileError:
-        print("File already exists")
-        exit()
-
+    new()
 
 else:
     help()
