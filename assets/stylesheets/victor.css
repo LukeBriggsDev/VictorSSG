@@ -113,14 +113,8 @@ a:hover{
     margin-right: 0.5rem;
     margin-left: 0.5rem;
 }
-.social-link i {
-    color: #475569;
+.fa {
     font-size: 2.1rem;
-}
-
-
-.social-link i :hover{
-    color: #46b4ff;
 }
 
 @media only screen and (max-width: 768px) {
