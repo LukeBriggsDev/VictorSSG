@@ -17,7 +17,11 @@ li {
 
 a {
     text-decoration: none;
-    color: rgba(0, 0, 0, 0.59);
+    color: rgba(0, 0, 0, 0.79);
+}
+
+li a {
+    color: #3582b8;
 }
 
 p a{
@@ -190,20 +194,25 @@ article li li{
 article .post-title {
     font-size: 3rem;
     line-height: 3.5rem;
+    margin-bottom: 1rem;
 }
 
 blockquote {
-    background-color: #f6f5f4;
     padding-top: 1rem;
     padding-bottom: 1rem;
     padding-left: 1rem;
     border-radius: 8px;
-    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-left: 10px solid #3582b8;
 }
 
 blockquote p {
     margin: 0;
     color: rgba(71, 85, 105, 0.63);
+}
+
+figcaption {
+    text-align: center;
 }
 
 @media only screen and (max-width: 768px) {
@@ -250,9 +259,13 @@ blockquote p {
 
 
 @media (prefers-color-scheme: dark) {
-    body {
+    html, body {
         background-color: #252525;
         color: white;
+    }
+
+    blockquote p{
+        color: lightgrey;
     }
 
     .nav-link {
@@ -266,7 +279,11 @@ blockquote p {
         color: lightgrey;
     }
     .social-link :hover{
-        color: #46b4ff;;
+        color: #46b4ff;
+    }
+
+    li a {
+        color: #3582b8;
     }
 
     .nav-menu {
@@ -281,7 +298,11 @@ blockquote p {
         color: lightgrey;
     }
 
-    .post-item a {
-        color: white;
+    .post-item .post-title :hover{
+        color: #46b4ff;
+    }
+    a {
+    text-decoration: none;
+    color: white;
     }
 }

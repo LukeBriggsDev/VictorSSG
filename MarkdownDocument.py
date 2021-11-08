@@ -1,6 +1,7 @@
 from datetime import datetime
 import pathlib
 import mistune
+from .MarkdownRenderer import HighlightRenderer
 
 class MarkdownDocument:
     """Stores content and metadata of a markdown document"""
@@ -26,7 +27,7 @@ class MarkdownDocument:
         featured_image = f"<img class='post-hero' src='{self.featured_image}' alt='{self.title}'/>" if self.featured_image != "" and \
                                                                                      self.featured_image is not None else ""
         self.markdown = markdown
-        self.html = featured_image + f"<h1 class='post-title'>{self.title}</h1>" + mistune.markdown(self.markdown, escape=False)
+        self.html = featured_image + f"<h1 class='post-title'>{self.title}</h1>" + mistune.markdown(self.markdown, renderer=HighlightRenderer(escape=False))
         self.author = metadata["author"]
         try:
             self.date = metadata["date"]

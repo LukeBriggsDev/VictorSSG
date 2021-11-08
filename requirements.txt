@@ -2,3 +2,4 @@ Jinja2
 pyyaml
 mistune==2.0.0rc1
 regex
+pygments
