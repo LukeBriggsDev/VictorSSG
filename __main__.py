@@ -95,7 +95,7 @@ def build():
                 metadata = yaml.safe_load(yaml_data)
                 document = MarkdownDocument(path=directory.joinpath(file.name), markdown=text, metadata=metadata)
                 documents.append(document)
-                template = jinja_env.get_template("info_page.html")
+                template = jinja_env.get_template("posts/post.html")
                 dest.write(template.render(CONFIG=CONFIG, page_title=page.title(), page_content=document.html))
 
 
@@ -108,8 +108,18 @@ def build():
         posts.sort(key=lambda x: datetime.timestamp(x.date), reverse=True)
         # Render post page
         with open(public_dir.joinpath("posts/index.html"), "w") as post_page:
-            post_page.write(jinja_env.get_template("posts.html").render(CONFIG=CONFIG, page_title="posts", posts=posts, public_dir=public_dir))
+            post_page.write(jinja_env.get_template("posts/list.html").render(CONFIG=CONFIG, page_title="Posts", posts=posts, public_dir=public_dir))
 
+
+        # Arrange projects page
+        projects = []
+        for document in documents:
+            if public_dir.joinpath("projects") in document.path.parents:
+                projects.append(document)
+        projects.sort(key=lambda x: datetime.timestamp(x.date), reverse=True)
+        # Render project page
+        with open(public_dir.joinpath("projects/index.html"), "w") as project_page:
+            project_page.write(jinja_env.get_template("projects/list.html").render(CONFIG=CONFIG, page_title="Projects", projects=projects, public_dir=public_dir))
     except FileNotFoundError as e:
         print(f"{e.filename} was not found, have you ran init?")
 

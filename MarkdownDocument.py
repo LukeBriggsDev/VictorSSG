@@ -27,8 +27,13 @@ class MarkdownDocument:
         featured_image = f"<img class='post-hero' src='{self.featured_image}' alt='{self.title}'/>" if self.featured_image != "" and \
                                                                                      self.featured_image is not None else ""
         self.markdown = markdown
-        self.html = featured_image + f"<h1 class='post-title'>{self.title}</h1>" + mistune.markdown(self.markdown, renderer=HighlightRenderer(escape=False))
+        self.html = featured_image + f"<h1 class='post-title'>{self.title}</h1>" + \
+                    mistune.markdown(self.markdown,
+                                     renderer=HighlightRenderer(escape=False),
+                                     plugins=["url"])
         self.author = metadata["author"]
+        excerpt_length = 280 if len(self.markdown) > 280 else len(self.markdown)
+        self.excerpt = ''.join([char for char in self.markdown[:excerpt_length] if char.isalnum() or char in "\"\'“” .,!?:;()[]/-\r\n"]) + "..."
         try:
             self.date = metadata["date"]
         except:
@@ -42,7 +47,9 @@ class MarkdownDocument:
             self.categories = metadata["categories"]
         except KeyError:
             self.categories = []
+        try:
+            self.description = metadata["description"]
+        except KeyError:
+            self.description = self.excerpt
 
-        desc_length = 280 if len(self.markdown) > 280 else len(self.markdown)
-        self.description = ''.join([char for char in self.markdown[:desc_length] if char.isalnum() or char in "\"\'“” .,!?:;()[]/-\r\n"]) + "..."
 

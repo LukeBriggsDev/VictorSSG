@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% block title %} {{ page_title }} {% endblock %}
 {% block content %}
     <ul class="post-list">
@@ -11,7 +10,7 @@
                         <img class="post-thumbnail" src="{{ post.featured_image }}"  alt="{{ post.description }}" />
                     {% endif %}
                     <h1 class="post-title">{{ post.title }}</h1>
-                    <p class="post-excerpt">
+                    <p class="description">
                         {{ post.description }}
                     </p>
             </li>
