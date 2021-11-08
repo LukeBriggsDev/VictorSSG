@@ -238,10 +238,10 @@ figcaption {
 
     .post-list {
         align-items: center;
+        width: 90%;
     }
 
     .post-thumbnail {
-        width: 90vw;
         height: 50%;
     }
 
