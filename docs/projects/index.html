@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Projects  - Luke Briggs</title>
+    <link rel="stylesheet" href="/assets/stylesheets/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/stylesheets/victor.css">
+    <link rel="stylesheet" href="/assets/stylesheets/syntax_highlight.css">
+    <link rel="stylesheet" href="/assets/stylesheets/projects.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <ul class="nav-menu">
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/posts">Posts</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/projects">Projects</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">About</a>
+                </li>
+            
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+</header>
+
+    <ul class="project-list">
+        
+            <a href="/projects/sounds2spotify">
+                <li class="project-item grow">
+
+                    
+                        <img class="project-thumbnail" src="/static/projects/sounds2spotify_new_banner.svg"  alt="Web extension for that converts the tracklists that appear on BBC Sounds into Spotify playlists." />
+                    
+                    <h1 class="project-title">Sounds2Spotify</h1>
+                    <p class="description project-description">
+                        Web extension for that converts the tracklists that appear on BBC Sounds into Spotify playlists.
+                    </p>
+            </li>
+            </a>
+        
+            <a href="/projects/calmer-internet">
+                <li class="project-item grow">
+
+                    
+                        <img class="project-thumbnail" src="/static/calmer-internet/banner.svg"  alt="A web extension that hides the elements of web pages that are best off hidden." />
+                    
+                    <h1 class="project-title">Calmer Internet</h1>
+                    <p class="description project-description">
+                        A web extension that hides the elements of web pages that are best off hidden.
+                    </p>
+            </li>
+            </a>
+        
+            <a href="/projects/newcastle-bst">
+                <li class="project-item grow">
+
+                    
+                        <img class="project-thumbnail" src="/static/postimages/full-release-newcastle-bst/bibtex.png"  alt="Harvard referencing style as recommended by Newcastle University" />
+                    
+                    <h1 class="project-title">Newcastle-bst</h1>
+                    <p class="description project-description">
+                        Harvard referencing style as recommended by Newcastle University
+                    </p>
+            </li>
+            </a>
+        
+            <a href="/projects/pepys">
+                <li class="project-item grow">
+
+                    
+                        <img class="project-thumbnail" src="/static/postimages/inspection-and-dissection-pepys/BookLogoLargeWhite.svg"  alt="A straightforward markdown journal" />
+                    
+                    <h1 class="project-title">Pepys</h1>
+                    <p class="description project-description">
+                        A straightforward markdown journal
+                    </p>
+            </li>
+            </a>
+        
+            <a href="/projects/type-or-die">
+                <li class="project-item grow">
+
+                    
+                        <img class="project-thumbnail" src="/static/postimages/21/cover.png"  alt="Top-down zombie wave shooter where it&#39;s not your aim that matters but how fast you can type." />
+                    
+                    <h1 class="project-title">Type or Die</h1>
+                    <p class="description project-description">
+                        Top-down zombie wave shooter where it&#39;s not your aim that matters but how fast you can type.
+                    </p>
+            </li>
+            </a>
+        
+            <a href="/projects/dice-jack">
+                <li class="project-item grow">
+
+                    
+                        <img class="project-thumbnail" src="/static/projects/dicejack.png"  alt="An event-driven dice game" />
+                    
+                    <h1 class="project-title">Dice Jack</h1>
+                    <p class="description project-description">
+                        An event-driven dice game
+                    </p>
+            </li>
+            </a>
+        
+            <a href="/projects/ping">
+                <li class="project-item grow">
+
+                    
+                        <img class="project-thumbnail" src="/static/projects/ping.png"  alt="A remake of the classic Pong game" />
+                    
+                    <h1 class="project-title">Ping!</h1>
+                    <p class="description project-description">
+                        A remake of the classic Pong game
+                    </p>
+            </li>
+            </a>
+        
+            <a href="/projects/fallen-stars">
+                <li class="project-item grow">
+
+                    
+                        <img class="project-thumbnail" src="/static/projects/fallen-stars.png"  alt="My first video game - a clone of asteroids" />
+                    
+                    <h1 class="project-title">Fallen Stars</h1>
+                    <p class="description project-description">
+                        My first video game - a clone of asteroids
+                    </p>
+            </li>
+            </a>
+        
+    </ul>
+
+<script>
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+
+    hamburger.addEventListener("click", mobileMenu);
+
+    function mobileMenu() {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+
+    }
+
+    const navLink = document.querySelectorAll(".nav-link");
+
+    navLink.forEach(n => n.addEventListener("click", closeMenu));
+
+    function closeMenu() {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+    }
+
+</script>
+</body>
+</html>

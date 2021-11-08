@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> About  - Luke Briggs</title>
+    <link rel="stylesheet" href="/assets/stylesheets/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/stylesheets/victor.css">
+    <link rel="stylesheet" href="/assets/stylesheets/syntax_highlight.css">
+    <link rel="stylesheet" href="/assets/stylesheets/projects.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <ul class="nav-menu">
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/posts">Posts</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/projects">Projects</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">About</a>
+                </li>
+            
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+</header>
+
+    <article>
+        <h1 class='post-title'>About</h1><a href='about'></a><h1>About</h1>
+<p>I'm Luke Briggs: a Computer Science student from the UK studying at Newcastle University.</p>
+<a href='about-site'></a><h4>About Site</h4>
+<p>This is a site where I will share what I think might be helpful to other people in similar
+places in life. Most of the stuff here will be related to side projects, my academic work, and will
+be a reference to which I will point to on occasion.</p>
+<p>The full story of how this site was created can be found <a href="/where-hugo-i-go">here</a>.</p>
+<ul>
+<li>PGP public Key ID - <code>0x37B9B28811BBE231</code></li>
+<li>PGP public key asc - <a href="/public.asc">public.asc</a></li>
+</ul>
+
+    </article>
+
+<script>
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+
+    hamburger.addEventListener("click", mobileMenu);
+
+    function mobileMenu() {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+
+    }
+
+    const navLink = document.querySelectorAll(".nav-link");
+
+    navLink.forEach(n => n.addEventListener("click", closeMenu));
+
+    function closeMenu() {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+    }
+
+</script>
+</body>
+</html>

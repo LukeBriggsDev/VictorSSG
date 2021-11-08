@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Fallen-Stars  - Luke Briggs</title>
+    <link rel="stylesheet" href="/assets/stylesheets/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/stylesheets/victor.css">
+    <link rel="stylesheet" href="/assets/stylesheets/syntax_highlight.css">
+    <link rel="stylesheet" href="/assets/stylesheets/projects.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <ul class="nav-menu">
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/posts">Posts</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/projects">Projects</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">About</a>
+                </li>
+            
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+</header>
+
+    <article>
+        <img class='post-hero' src='/static/projects/fallen-stars.png' alt='Fallen Stars'/><h1 class='post-title'>Fallen Stars</h1><p>This was my first attempt at a video-game and was done well before any other projects. It was made in Construct 2 so no
+actual programming was involved but it was the first time I had designed a game from scratch and was a vital learning
+experience. It was also a game I did very little of the art for and relied heavily on <a href="https://www.opengameart.org">opengameart.org</a> which is a great
+source of assets for those who are more focused on programming than art.</p>
+<p>The game itself is an asteroids clone with a cartoon atmosphere and explosion animations that I was far too proud of at
+the time. It even has a (barely) working high score system.</p>
+<img src="/static/projects/fallenstars.gif" alt="Fallen Stars" width="50%">
+<iframe src="https://widgets.gamejolt.com/package/v1?key=AtyaAixk" frameborder="0" width="500" height="200"></iframe>
+
+    </article>
+
+<script>
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+
+    hamburger.addEventListener("click", mobileMenu);
+
+    function mobileMenu() {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+
+    }
+
+    const navLink = document.querySelectorAll(".nav-link");
+
+    navLink.forEach(n => n.addEventListener("click", closeMenu));
+
+    function closeMenu() {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+    }
+
+</script>
+</body>
+</html>
