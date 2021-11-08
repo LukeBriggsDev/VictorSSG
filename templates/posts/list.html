@@ -3,7 +3,7 @@
 {% block content %}
     <ul class="post-list">
         {% for post in posts %}
-            <a href="/{{ post.path.relative_to(public_dir).parent }}">
+            <a href="{{ post.path.relative_to(public_dir).parent }}">
                 <li class="post-item grow">
 
                     {% if post.featured_image != "" and post.featured_image %}

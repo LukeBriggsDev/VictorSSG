@@ -2,7 +2,7 @@
 title: "Pepys"
 date: 2021-05-31T16:47:38+01:00
 draft: false
-featuredImage: /static/postimages/inspection-and-dissection-pepys/BookLogoLargeWhite.svg
+featuredImage: static/postimages/inspection-and-dissection-pepys/BookLogoLargeWhite.svg
 author: Luke Briggs
 rssFullText: true
 linkToMarkdown: true

@@ -3,7 +3,7 @@
 {% block content %}
     <ul class="project-list">
         {% for project in projects %}
-            <a href="/{{ project.path.relative_to(public_dir).parent }}">
+            <a href="{{ project.path.relative_to(public_dir).parent }}">
                 <li class="project-item grow">
 
                     {% if project.featured_image != "" and project.featured_image %}
@@ -13,7 +13,7 @@
                     <p class="description project-description">
                         {{ project.description }}
                     </p>
-            </li>
+                </li>
             </a>
         {% endfor %}
     </ul>

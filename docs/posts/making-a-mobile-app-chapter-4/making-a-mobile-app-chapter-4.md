@@ -2,7 +2,7 @@
 title: "Making a Mobile App – Chapter 4: Fast and Flash"
 date: 2018-12-10T21:57:21
 draft: false
-featuredImage: /static/postimages/8/desk.jpg
+featuredImage: static/postimages/8/desk.jpg
 author: Luke Briggs
 rssFullText: true
 linkToMarkdown: true
@@ -18,19 +18,19 @@ As this app will be for a business, it has to serve some purposes. First it has 
 #### Branding
 The company colours were red, dark grey and white. It therefore makes sense for the app to only use the colours red dark grey and white, seems simple enough.
 
-![red app](/static/postimages/8/redapp.png)
+![red app](static/postimages/8/redapp.png)
 
 Eww, a red pastel background with black text and mismatch white buttons and icons. It looks like a tomato soup can just exploded in the microwave. It’s all about complimentary colours and keeping things clean. The main colour of any app or website shouldn’t be something outrageous or garish, you want to present professionalism and minimalism. It’s good to have an accent colour that pops and has your brand stand out but if you end up with too much it is both nauseating and ugly.
 
-![black app](/static/postimages/8/blackapp.png)
+![black app](static/postimages/8/blackapp.png)
 
 Ahh Much better. Character is nice but flamboyance is very easily annoying
 
 #### Purpose
 Like I say, your app needs a purpose otherwise what’s the point?
 
-![menu](/static/postimages/8/menu.png)
-![times](/static/postimages/8/times.png)
+![menu](static/postimages/8/menu.png)
+![times](static/postimages/8/times.png)
 
 As you can see the app act doesn’t revolutionise e-commerce but what it does do is act as a hub for everything involved with this company. You can click a button and google maps opens up with the locations for shops and restaurants already plugged in and ready to plan a route. You can call to book a table for a restaurant and there are galleries of menus and images to see what products and dishes are on offer (As a side note if you are making a ReactJS app in Expo then [react-native-image-view](https://www.npmjs.com/package/react-native-image-view) is a godsend, it is a bit fiddly to get working but it means you can keep using Expo without having to delve into Android files and java SDKs).
 

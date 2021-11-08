@@ -2,7 +2,7 @@
 title: "Inspection and Dissection: Sounds2Spotify"
 date: 2021-09-16T15:07:04+01:00
 draft: false
-featuredImage: /static/projects/sounds2spotify_banner.svg
+featuredImage: static/projects/sounds2spotify_banner.svg
 author: Luke Briggs
 rssFullText: true
 linkToMarkdown: true
@@ -33,11 +33,11 @@ The goal: to convert the music played on BBC Sounds to Spotify playlists.
 # Code Walkthrough
 
 ## Part 1: Getting the Music
-![BBC Sounds Tracklist](/static/postimages/inspection-and-dissection-sounds2spotify/tracklist.png)
+![BBC Sounds Tracklist](static/postimages/inspection-and-dissection-sounds2spotify/tracklist.png)
 
 <hr style="border: 1px solid black">
 
-![Track popup](/static/postimages/inspection-and-dissection-sounds2spotify/track_popup.png)
+![Track popup](static/postimages/inspection-and-dissection-sounds2spotify/track_popup.png)
 
 Thankfully, underneath every music programme, the BBC provides a track list of all the music played throughout the programme as well as a popover menu providing links to external sources.
 

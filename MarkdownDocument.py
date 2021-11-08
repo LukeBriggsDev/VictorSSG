@@ -1,6 +1,7 @@
 from datetime import datetime
 import pathlib
 import mistune
+from .CONSTANTS import CONFIG
 from .MarkdownRenderer import HighlightRenderer
 
 class MarkdownDocument:

@@ -2,7 +2,7 @@
 title: "Calmer Internet"
 date: 2021-08-17T15:46:07+01:00
 draft: false
-featuredImage: /static/calmer-internet/banner.svg
+featuredImage: static/calmer-internet/banner.svg
 author: Luke Briggs
 rssFullText: true
 linkToMarkdown: true
@@ -15,17 +15,17 @@ Many sites are designed to suck time away from you by showing you things that ar
 
 This extension strips away all these comments, recommendations and promotions leaving you with just the content you have specifically asked to receive.
 <figure style="margin-bottom: 24px">
-<img src="/static/calmer-internet/youtubepromo.jpg" alt="YouTube"/>
+<img src="static/calmer-internet/youtubepromo.jpg" alt="YouTube"/>
 <figcaption>Youtube without comments or recommendation sidebar</figcaption>
 </figure>
 
 <figure style="margin-bottom: 24px">
-<img src="/static/calmer-internet/twitterpromo.jpg" alt="Twitter"/>
+<img src="static/calmer-internet/twitterpromo.jpg" alt="Twitter"/>
 <figcaption>Twitter without trending, who to follow, or explore elements</figcaption>
 </figure>
 
 <figure style="margin-bottom: 24px">
-<img src="/static/calmer-internet/instapromo.jpg" alt="Instagram"/>
+<img src="static/calmer-internet/instapromo.jpg" alt="Instagram"/>
 <figcaption>Instagram without comments</figcaption>
 </figure>
 

@@ -2,7 +2,7 @@
 title: "A Game of Two Halves"
 date: 2018-06-23T17:20:33
 draft: false
-featuredImage: /static/postimages/2/construct2.jpg
+featuredImage: static/postimages/2/construct2.jpg
 author: Luke Briggs
 rssFullText: true
 linkToMarkdown: true

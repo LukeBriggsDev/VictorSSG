@@ -2,7 +2,7 @@
 title: "Making a Mobile App – Chapter 1: A Few False Starts"
 date: 2018-12-09T19:57:21
 draft: false
-featuredImage: /static/postimages/5/phone.jpg
+featuredImage: static/postimages/5/phone.jpg
 author: Luke Briggs
 rssFullText: true
 linkToMarkdown: true

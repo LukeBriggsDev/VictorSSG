@@ -2,7 +2,7 @@
 title: "The Layperson’s Guide to LaTeX"
 date: 2021-01-06T22:06:22
 draft: false
-featuredImage: /static/postimages/11/rainbow.jpg
+featuredImage: static/postimages/11/rainbow.jpg
 author: Luke Briggs
 rssFullText: true
 linkToMarkdown: true
@@ -28,12 +28,12 @@ It depends on your personality. If you are happy with documents that are only ad
 In the days when people weren’t made of pixels I spent the time making my own word template. It had wonderful serif headings; all the styles used Word’s tools so it did as much of the heavy lifting as possible; and all the font sizes were made just right.
 
 The results from Word are as follows:
-![full word document](/static/postimages/11/full.png)
+![full word document](static/postimages/11/full.png)
 
 It looks *okay*. It looks far better than what some people create in Word. Even creating something okay looking feels like a hack though. Having nice paragraph spacing underneath headings required my to individually change all the line spacing options by hand. Anyone who has ever tried to implement code into a word document also knows that it will require you to sacrifice your firstborn.
 
 Now, for a LaTeX document:
-![full latex](/static/postimages/11/fulllatex.png)
+![full latex](static/postimages/11/fulllatex.png)
 
 No time spent messing with templates, no changing font sizes, and it probably took me less time to make a document that looks even better. The best thing about LaTeX is that because everything is done programmatically, it can have an integration that is mind boggling. For instance, if you want to insert a segment of a python script in your document you dont actually need to copy and paste bits into your .tex file. You can just tell it where the script is, give it the line numbers and it will display and format it all for you.
 
@@ -55,7 +55,7 @@ I'm so pretty
 \end{document}
 ```
 And we get:
-![empty latex](/static/postimages/11/empty.png)
+![empty latex](static/postimages/11/empty.png)
 
 Currently it looks like a note left by a serial killer with access to a typewriter so lets stick our name on it.
 
@@ -75,7 +75,7 @@ The title, date, and author of your document all have dedicated tags in LaTeX. T
 \end{document}
 ```
 Output:
-![title page](/static/postimages/11/empty.png)
+![title page](static/postimages/11/empty.png)
 
 You can hear groups of your preferred gender(s) running to throw themselves at you as we speak.
 
@@ -103,7 +103,7 @@ I just add another section tag and it will become the second section in the docu
 
 Output:
 
-![content](/static/postimages/11/content.png)
+![content](static/postimages/11/content.png)
 
 Positive gasps emanate from the crowd at the sight of such serifs. You will notice that LaTex automatically added heading numbers and changed the weight, face, and size of the type to better suit a heading. [There are all sorts of things you can do](https://en.wikibooks.org/wiki/LaTeX) that I haven’t covered like how it can do bibliographies for you and organise images and figures correctly. There are also things that are beyond my knowledge like drawing your own 3d graphics within source. All of it can be taken one step at a time. If you don’t know something, look it up, learn how to do it, and implement it – it’s all pretty approachable.
 

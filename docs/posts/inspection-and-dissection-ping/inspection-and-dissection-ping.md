@@ -2,7 +2,7 @@
 title: "Inspection & Dissection: Ping! – My First Game in Unity"
 date: 2018-06-23T17:52:33
 draft: false
-featuredImage: /static/postimages/3/unity.jpg
+featuredImage: static/postimages/3/unity.jpg
 author: Luke Briggs
 rssFullText: true
 linkToMarkdown: true

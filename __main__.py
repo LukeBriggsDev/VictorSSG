@@ -10,7 +10,7 @@ import pathlib
 import yaml
 from jinja2 import Environment, PackageLoader, select_autoescape
 import mistune
-from .CONSTANTS import content_dir, static_dir, jinja_env, public_dir, config_file, archetypes_dir, yaml_re, eval_re, \
+from .CONSTANTS import content_dir, static_dir, jinja_env, public_dir, CONFIG, archetypes_dir, yaml_re, eval_re, \
     code_re, header_re
 from .social.social import DefaultSites, SocialLink
 from http.server import HTTPServer, SimpleHTTPRequestHandler
@@ -39,10 +39,6 @@ def build():
         if os.path.exists(public_dir):
             shutil.rmtree(public_dir)
             os.mkdir(public_dir)
-
-        # Config
-        with open(config_file, "r") as f:
-            CONFIG = yaml.safe_load(f.read())
 
 
         # Non-empty social links

@@ -2,7 +2,7 @@
 title: "Inspection & Dissection: This Site!"
 date: 2021-02-03T16:39:25
 draft: false
-featuredImage: /static/postimages/12/index.png
+featuredImage: static/postimages/12/index.png
 author: Luke Briggs
 rssFullText: true
 linkToMarkdown: true

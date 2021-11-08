@@ -2,7 +2,7 @@
 title: "Making a Mobile App – Chapter 2: A Bad Worker Blames His Tools"
 date: 2018-12-09T20:07:21
 draft: false
-featuredImage: /static/postimages/6/phone.jpg
+featuredImage: static/postimages/6/phone.jpg
 author: Luke Briggs
 rssFullText: true
 linkToMarkdown: true

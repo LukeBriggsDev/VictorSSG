@@ -2,7 +2,7 @@
 title: "Making a Mobile App – Chapter 3: The Setup"
 date: 2018-12-10T20:14:17
 draft: false
-featuredImage: /static/postimages/7/drawingboard.jpg
+featuredImage: static/postimages/7/drawingboard.jpg
 author: Luke Briggs
 rssFullText: true
 linkToMarkdown: true

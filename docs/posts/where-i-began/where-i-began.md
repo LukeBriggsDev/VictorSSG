@@ -2,7 +2,7 @@
 title: "Where I Began"
 date: 2018-06-27T18:40:06
 draft: false
-featuredImage: /static/postimages/4/code.jpg
+featuredImage: static/postimages/4/code.jpg
 author: Luke Briggs
 rssFullText: true
 linkToMarkdown: true

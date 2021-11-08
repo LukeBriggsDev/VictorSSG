@@ -2,7 +2,7 @@
 title: "Where Hugo I Go"
 date: 2021-05-03T20:06:07+01:00
 draft: false
-featuredImage: /static/postimages/where-hugo-i-go/banner.png
+featuredImage: static/postimages/where-hugo-i-go/banner.png
 author: Luke Briggs
 rssFullText: true
 linkToMarkdown: true

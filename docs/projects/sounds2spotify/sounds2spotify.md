@@ -2,7 +2,7 @@
 title: "Sounds2Spotify"
 date: 2021-09-16T17:46:02
 draft: false
-featuredImage: /static/projects/sounds2spotify_new_banner.svg
+featuredImage: static/projects/sounds2spotify_new_banner.svg
 author: Luke Briggs
 rssFullText: true
 categories: [Project Release]

@@ -2,7 +2,7 @@
 title: "Inspection and Dissection: Calmer Internet - My First Web Extension"
 date: 2021-08-18T15:18:16+01:00
 draft: false
-featuredImage: /static/calmer-internet/banner.svg
+featuredImage: static/calmer-internet/banner.svg
 author: Luke Briggs
 rssFullText: true
 linkToMarkdown: true

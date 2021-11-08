@@ -2,7 +2,7 @@
 title: "Type or Die"
 date: 2021-05-13T17:01:12
 draft: false
-featuredImage: /static/postimages/21/cover.png
+featuredImage: static/postimages/21/cover.png
 author: Luke Briggs
 rssFullText: true
 categories: [Project Release]

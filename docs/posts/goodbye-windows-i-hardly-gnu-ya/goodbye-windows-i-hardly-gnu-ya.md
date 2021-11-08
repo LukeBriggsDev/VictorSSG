@@ -2,7 +2,7 @@
 title: "Goodbye Windows, I Hardly GNU ya"
 date: 2021-02-07T21:12:30
 draft: false
-featuredImage: /static/postimages/13/desktop.png
+featuredImage: static/postimages/13/desktop.png
 author: Luke Briggs
 rssFullText: true
 linkToMarkdown: true
@@ -40,7 +40,7 @@ The Linux way is for people who care about these things. If you care about thing
 
 **Icon Set**: [Reversal](https://github.com/yeyushengfan258/Reversal-icon-theme)
 
-**Background**: ([Imgur](https://i.imgur.com/DUXXqM2.jpg)) ([Mirror](/static/postimages/13/themagichour.png))
+**Background**: ([Imgur](https://i.imgur.com/DUXXqM2.jpg)) ([Mirror](static/postimages/13/themagichour.png))
 
 ## Why Manjaro?
 

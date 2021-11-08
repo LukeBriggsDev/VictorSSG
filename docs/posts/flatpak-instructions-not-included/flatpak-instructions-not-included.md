@@ -2,7 +2,7 @@
 title: "Flatpak: Instructions Not Included"
 date: 2021-05-22T19:08:56+01:00
 draft: false
-featuredImage: /static/postimages/flatpak-instructions-not-included/flatpak.png
+featuredImage: static/postimages/flatpak-instructions-not-included/flatpak.png
 author: Luke Briggs
 rssFullText: true
 linkToMarkdown: true

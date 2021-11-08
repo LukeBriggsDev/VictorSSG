@@ -1,7 +1,7 @@
 ---
 title: "The First Line of Code"
 date: 2018-06-23T16:42:40
-featuredImage: /static/postimages/1/code.png
+featuredImage: static/postimages/1/code.png
 draft: false
 author: Luke Briggs
 rssFullText: true

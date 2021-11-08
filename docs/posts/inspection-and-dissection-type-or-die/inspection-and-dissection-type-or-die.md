@@ -2,7 +2,7 @@
 title: "Inspection and Dissection: Type or Die"
 date: 2021-03-05T12:11:40
 draft: false
-featuredImage: /static/postimages/21/cover.png
+featuredImage: static/postimages/21/cover.png
 author: Luke Briggs
 rssFullText: true
 linkToMarkdown: true

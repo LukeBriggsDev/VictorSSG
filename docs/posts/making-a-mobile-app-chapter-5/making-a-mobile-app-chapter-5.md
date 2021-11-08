@@ -2,7 +2,7 @@
 title: "Making a Mobile App – Chapter 5: Go Your Own Way"
 date: 2019-03-09T20:47:46
 draft: false
-featuredImage: /static/postimages/9/xkcd378.png
+featuredImage: static/postimages/9/xkcd378.png
 author: Luke Briggs
 rssFullText: true
 linkToMarkdown: true

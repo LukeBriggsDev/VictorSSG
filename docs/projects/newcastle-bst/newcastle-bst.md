@@ -2,7 +2,7 @@
 title: "Newcastle-bst"
 date: 2021-07-10T10:33:04+01:00
 draft: false
-featuredImage: /static/postimages/full-release-newcastle-bst/bibtex.png
+featuredImage: static/postimages/full-release-newcastle-bst/bibtex.png
 author: Luke Briggs
 rssFullText: true
 categories: [Project Release]

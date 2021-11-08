@@ -2,7 +2,7 @@
 title: "Inspection & Dissection: Dice-Jack"
 date: 2019-09-24T21:06:18
 draft: false
-featuredImage: /static/postimages/10/dicejack1.png
+featuredImage: static/postimages/10/dicejack1.png
 author: Luke Briggs
 rssFullText: true
 linkToMarkdown: true
@@ -12,7 +12,7 @@ As part of a course we had to make a game in 2 days that involved random dice an
 
 The rest of the class generally stuck to the brief with 3 dice that you rolled and you got points for each dot.
 
-![dicejack 2](/static/postimages/10/dicejack2.png)
+![dicejack 2](static/postimages/10/dicejack2.png)
 
 As you can see, its rather simple. Theres 4 picture boxes, 4 labels, 2 buttons and a listbox. Dice are rolled, the dots are added up and the score is added to the listbox. After 5 rolls the game ends and the player is given their total score. But to know how I added further features we need to look at how this prototype was made.
 
@@ -91,13 +91,13 @@ There is also some initialisation code that assigns images and there are event h
 
 The following won’t include too many code snippets since it is slightly more extensive (the rushed deadline also means it resembles a tin of Heinz spaghetti in a tumble dryer but we’ll keep that between us)
 
-![dicejack 1](/static/postimages/10/dicejack1.png)
+![dicejack 1](static/postimages/10/dicejack1.png)
 
 Lets break this down.
 
 First we have a background that was shamelessly made in powerpoint.
 
-![dicejack 3](/static/postimages/10/dicejack3.png)
+![dicejack 3](static/postimages/10/dicejack3.png)
 
 The rules, scores, and title are all labels. The bar on the right is made up of the same button and listbox items as before but with its properties edited to change colour, font and border style.
 
@@ -118,7 +118,7 @@ The rules are based on those by [James Yates](http://www.chessandpoker.com/dice_
 
 Instead of a big chunk of code I’m going to show you the process of a turn through our good old friend the flow chart. They can be intimidating but I’ve tried to make it in a way that is easy to follow and you should be ale to get a grasp of what the code is doing behind the scenes.
 
-![flowchart](/static/postimages/10/flowchart.png)
+![flowchart](static/postimages/10/flowchart.png)
 
 There you go, who needs a hundred lines of bolognese when you can have pastel shapes?
 

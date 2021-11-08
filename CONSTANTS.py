@@ -1,5 +1,5 @@
 import os
-import shutil
+import yaml
 import pathlib
 import regex as re
 from jinja2 import Environment, PackageLoader, select_autoescape
@@ -11,6 +11,9 @@ public_dir = pathlib.Path(os.path.join(os.path.join(os.getcwd(), "public")))
 archetypes_dir = pathlib.Path(os.path.join(os.path.join(os.getcwd(), "archetypes")))
 
 config_file = pathlib.Path(os.path.join(os.getcwd(), "config.yaml"))
+# Config
+with open(config_file, "r") as f:
+    CONFIG = yaml.safe_load(f.read())
 
 # Jinja environment
 jinja_env = Environment(

@@ -2,7 +2,7 @@
 title: "Dice Jack"
 date: 2019-09-23T17:59:24
 draft: false
-featuredImage: /static/projects/dicejack.png
+featuredImage: static/projects/dicejack.png
 author: Luke Briggs
 rssFullText: true
 categories: [Project Release]

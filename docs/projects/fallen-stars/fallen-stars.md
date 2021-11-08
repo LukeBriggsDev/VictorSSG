@@ -2,7 +2,7 @@
 title: "Fallen Stars"
 date: 2017-04-16T18:10:31
 draft: false
-featuredImage: /static/projects/fallen-stars.png
+featuredImage: static/projects/fallen-stars.png
 author: Luke Briggs
 rssFullText: true
 categories: [Project Release]
