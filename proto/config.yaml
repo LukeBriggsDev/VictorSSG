@@ -1,6 +1,10 @@
 {
   "title": "Title",
-  "base_url": "/"
+  "name": "John Smith",
+  "subtitle": "a blog",
+  "email": "john@example.com",
+  "rssDescription": "Blog feed",
+  "base_url": "http://example.com/",
   "navbar": [
     {
       "name": "Home",
@@ -24,7 +28,8 @@
       "linkedin": "",
       "github": "",
       "gitlab": "",
-      "twitter": ""
+      "twitter": "",
+      "rss": "index.xml",
     }
   },
 }

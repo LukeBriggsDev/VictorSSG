@@ -3,8 +3,10 @@ import math
 import socketserver
 import sys
 import os
+from feedgen.feed import FeedGenerator
 import shutil
 from datetime import datetime
+from datetime import timezone
 from typing import Tuple
 import regex as re
 import pathlib
@@ -47,6 +49,7 @@ def build():
 
         # Links to appear on page
         social_links = []
+        other_links = []
         for link in config_links:
             if config_links[link] != "":
                 if link == "linkedin":
@@ -57,6 +60,12 @@ def build():
                     social_links.append(SocialLink(DefaultSites.GITLAB, config_links["gitlab"]))
                 elif link == "twitter":
                     social_links.append(SocialLink(DefaultSites.TWITTER, config_links["twitter"]))
+                else:
+                    other_links.append({"icon": "fa-"+link, "link": config_links[link]})
+
+
+
+
 
         # Copy stylesheets
         shutil.copytree(os.path.join(os.path.dirname(__file__), "assets"), os.path.join(public_dir,
@@ -67,7 +76,7 @@ def build():
         # Build index
         index_page = jinja_env.get_template("index.html")
         with open(os.path.join(public_dir, "index.html"), "w") as f:
-            f.write(index_page.render(CONFIG=CONFIG, social_links=social_links))
+            f.write(index_page.render(CONFIG=CONFIG, social_links=social_links, other_links=other_links))
 
         # Build content
         content_files = content_dir.glob("**/*.md")
@@ -105,6 +114,28 @@ def build():
             if public_dir.joinpath("posts") in document.path.parents:
                 posts.append(document)
         posts.sort(key=lambda x: datetime.timestamp(x.date), reverse=True)
+
+        # Create rss feed
+        fg = FeedGenerator()
+        fg.title(CONFIG["title"])
+        fg.link(href=CONFIG["base_url"], rel='alternate')
+        fg.author(name=CONFIG["name"], email=CONFIG["email"])
+        fg.logo(str(public_dir.joinpath("favicon.ico")))
+        fg.subtitle(CONFIG["rssDescription"])
+        fg.language("en")
+
+        for post in posts:
+            fe = fg.add_entry()
+            fe.id = CONFIG["base_url"] + str(post.path.relative_to(public_dir))
+            fe.link(href=CONFIG["base_url"] + str(post.path.relative_to(public_dir)))
+            # Remove html tags
+            fe.title(title=re.sub('<[^<]+?>', '', post.title))
+            fe.description(post.html if post.rss_full_text else post.description)
+            fe.author(name=post.author)
+            fe.content(post.html)
+            fe.pubDate(post.date.replace(tzinfo=timezone.utc))
+            fg.rss_file(str(public_dir.joinpath("index.xml")), pretty=True)
+
         # Render post pages
         with open(public_dir.joinpath("posts/index.html"), "w") as post_page:
             post_page.write(jinja_env.get_template("posts/list.html").render(CONFIG=CONFIG, page_title="Posts",
@@ -152,9 +183,10 @@ class HTTPHandler(SimpleHTTPRequestHandler):
 
 
 def serve():
-    """Run basic web server in directort"""
+    """Run basic web server in directory"""
     server_address = ('', 8000)
     httpd = HTTPServer(server_address, HTTPHandler)
+    CONFIG["base_url"] = "/"
     print("Stating server on http://127.0.0.1:8000.\n Close with ^C")
     try:
         httpd.serve_forever()
