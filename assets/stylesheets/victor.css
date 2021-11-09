@@ -168,7 +168,26 @@ article li li{
     margin-left: auto;
     margin-right: auto;
     margin-top: 1rem;
+    margin-bottom: 3rem;
 }
+
+.post-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.post-nav a {
+    font-size: 1.5rem;
+    color: #3582b8;
+
+}
+
+.post-nav a:hover {
+    color: #46b4ff;
+}
+
 
 .post-item {
     height: fit-content;
@@ -304,7 +323,7 @@ figcaption {
     .social-link i {
         color: rgba(211, 211, 211, 0.78);
     }
-    .social-link :hover{
+    .social-link:hover{
         color: #46b4ff;
     }
 
@@ -324,7 +343,7 @@ figcaption {
         color: rgba(211, 211, 211, 0.78);
     }
 
-    .post-item .post-title :hover{
+    .post-item .post-title:hover{
         color: #46b4ff;
     }
     a {

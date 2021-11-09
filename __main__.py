@@ -1,4 +1,5 @@
 """Main method"""
+import math
 import socketserver
 import sys
 import os
@@ -23,7 +24,8 @@ def init():
     shutil.copy(os.path.join(os.path.dirname(__file__), "proto", "config.yaml"), os.getcwd())
 
     # Copy archetype
-    shutil.copytree(os.path.join(os.path.dirname(__file__), "proto", "archetypes"), os.path.join(os.getcwd(), "archetypes"))
+    shutil.copytree(os.path.join(os.path.dirname(__file__), "proto", "archetypes"),
+                    os.path.join(os.getcwd(), "archetypes"))
 
     # Create directories if not exist
     for directory in [content_dir, static_dir, public_dir, archetypes_dir]:
@@ -39,7 +41,6 @@ def build():
         if os.path.exists(public_dir):
             shutil.rmtree(public_dir)
             os.mkdir(public_dir)
-
 
         # Non-empty social links
         config_links = CONFIG["index"]["socialLinks"]
@@ -59,7 +60,7 @@ def build():
 
         # Copy stylesheets
         shutil.copytree(os.path.join(os.path.dirname(__file__), "assets"), os.path.join(public_dir,
-                                                                                                    "assets"))
+                                                                                        "assets"))
         # Copy static
         shutil.copytree(static_dir, public_dir, dirs_exist_ok=True)
 
@@ -94,18 +95,30 @@ def build():
                 template = jinja_env.get_template("posts/post.html")
                 dest.write(template.render(CONFIG=CONFIG, page_title=page.title(), page_content=document.html))
 
-
-
         # Arrange posts page
         posts = []
         for document in documents:
             if public_dir.joinpath("posts") in document.path.parents:
                 posts.append(document)
         posts.sort(key=lambda x: datetime.timestamp(x.date), reverse=True)
-        # Render post page
+        # Render post pages
         with open(public_dir.joinpath("posts/index.html"), "w") as post_page:
-            post_page.write(jinja_env.get_template("posts/list.html").render(CONFIG=CONFIG, page_title="Posts", posts=posts, public_dir=public_dir))
+            post_page.write(jinja_env.get_template("posts/list.html").render(CONFIG=CONFIG, page_title="Posts",
+                                                                             posts=posts[:16], public_dir=public_dir,
+                                                                             next_page="posts/1", prev_page=None))
 
+        for i in range(math.ceil(len(posts) / 16)):
+            page = public_dir.joinpath(f"posts/{i}")
+            next_page  = f"posts/{i + 1}" if (i + 1) < math.ceil(len(posts) / 16) else None
+            prev_page = f"posts/{i - 1}" if (i - 1) >= 0 else None
+            os.makedirs(page)
+            with open(page.joinpath("index.html"), "w") as project_page:
+                project_page.write(
+                    jinja_env.get_template("posts/list.html").render(CONFIG=CONFIG, page_title="Posts",
+                                                                     posts=posts[(i * 16):(i + 1) * 16],
+                                                                     public_dir=public_dir,
+                                                                     next_page=next_page,
+                                                                     prev_page=prev_page))
 
         # Arrange projects page
         projects = []
@@ -115,7 +128,9 @@ def build():
         projects.sort(key=lambda x: datetime.timestamp(x.date), reverse=True)
         # Render project page
         with open(public_dir.joinpath("projects/index.html"), "w") as project_page:
-            project_page.write(jinja_env.get_template("projects/list.html").render(CONFIG=CONFIG, page_title="Projects", projects=projects, public_dir=public_dir))
+            project_page.write(jinja_env.get_template("projects/list.html").render(CONFIG=CONFIG, page_title="Projects",
+                                                                                   projects=projects,
+                                                                                   public_dir=public_dir))
     except FileNotFoundError as e:
         print(f"{e.filename} was not found, have you ran init?")
 
@@ -125,6 +140,7 @@ def build():
 
 class HTTPHandler(SimpleHTTPRequestHandler):
     """Simple HTTPS handler to serve from public directory"""
+
     def __init__(self, *args,
                  **kwargs):
         root_path = os.path.join(os.getcwd(), "public")
@@ -141,6 +157,7 @@ def serve():
     except KeyboardInterrupt:
         print("\nClosing server")
         exit(0)
+
 
 def new():
     if len(sys.argv) != 3:
@@ -177,9 +194,10 @@ def new():
         print("File already exists")
         exit()
 
+
 def help():
     """Provide help message listing commands"""
-    help_messages={
+    help_messages = {
         "help": "display this message",
         "init": "initialise directory for victor project",
         "build": "build directory",
@@ -208,5 +226,3 @@ elif sys.argv[1] == "new":
 
 else:
     help()
-
-
