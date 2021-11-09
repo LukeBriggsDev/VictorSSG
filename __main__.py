@@ -78,6 +78,12 @@ def build():
         with open(os.path.join(public_dir, "index.html"), "w") as f:
             f.write(index_page.render(CONFIG=CONFIG, social_links=social_links, other_links=other_links))
 
+        # Create sitemap.xml
+        with open(public_dir.joinpath("sitemap.xml"), "w") as sitemap:
+            sitemap.write("""<urlset
+xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+xmlns:xhtml="http://www.w3.org/1999/xhtml">""")
+
         # Build content
         content_files = content_dir.glob("**/*.md")
         # List of converted documents
@@ -108,26 +114,19 @@ def build():
                     template = jinja_env.get_template("info.html")
                 dest.write(template.render(CONFIG=CONFIG, page_title=page.title(), post=document))
 
-        # Create sitemap.xml
-        with open(public_dir.joinpath("sitemap.xml"), "w") as sitemap:
-            sitemap.write("""<urlset
-xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-xmlns:xhtml="http://www.w3.org/1999/xhtml"
->
-            """)
+                # Add to sitemap
+                with open(public_dir.joinpath("sitemap.xml"), "a") as sitemap:
+                    sitemap.write(
+                        f"""
+    <url>
+        <loc>{CONFIG["base_url"]}{directory.relative_to(public_dir)}/</loc>
+        <lastmod>{datetime.now().isoformat()}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+                                """)
 
-            # Add to sitemap
-            for document in documents:
-                sitemap.write(
-                    f"""
-<url>
-    <loc>{CONFIG["base_url"]}{document.path.relative_to(public_dir)}</loc>
-    <lastmod>{datetime.now().isoformat()}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-</url>
-
-                    """)
+        with open(public_dir.joinpath("sitemap.xml"), "a") as sitemap:
             # close sitemap
             sitemap.write("</urlset>")
 
