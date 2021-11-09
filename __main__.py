@@ -92,8 +92,12 @@ def build():
                 metadata = yaml.safe_load(yaml_data)
                 document = MarkdownDocument(path=directory.joinpath(file.name), markdown=text, metadata=metadata)
                 documents.append(document)
-                template = jinja_env.get_template("posts/post.html")
-                dest.write(template.render(CONFIG=CONFIG, page_title=page.title(), page_content=document.html))
+
+                if content_dir.joinpath("projects") in file.parents or content_dir.joinpath("posts") in file.parents:
+                    template = jinja_env.get_template("posts/post.html")
+                else:
+                    template = jinja_env.get_template("info.html")
+                dest.write(template.render(CONFIG=CONFIG, page_title=page.title(), post=document))
 
         # Arrange posts page
         posts = []

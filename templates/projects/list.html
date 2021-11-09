@@ -10,6 +10,7 @@
                         <img class="project-thumbnail" src="{{ project.featured_image }}"  alt="{{ project.description }}" />
                     {% endif %}
                     <h1 class="project-title">{{ project.title|safe }}</h1>
+                    <h4 class="project-date">Released: {{ project.date.strftime("%B %Y") }}</h4>
                     <p class="description project-description">
                         {{ project.description }}
                     </p>

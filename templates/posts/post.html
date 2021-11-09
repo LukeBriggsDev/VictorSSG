@@ -3,6 +3,7 @@
 {% block title %} {{ page_title }} {% endblock %}
 {% block content %}
     <article>
-        {{ page_content|safe }}
+        <h4 class="description">{{ post.date.strftime('%a %d %b %Y') }}</h4>
+        {{ post.html|safe }}
     </article>
 {% endblock %}
