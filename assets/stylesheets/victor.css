@@ -200,8 +200,15 @@ article li li{
     line-height: 2.5rem;
 }
 
+.post-date {
+    color: rgba(71, 85, 105, 0.5);
+    font-weight: bold;
+    margin-bottom: -0.5rem;
+}
+
 .description {
     color: rgba(71, 85, 105, 0.42);
+    line-height: 1.2rem;
 }
 
 .post-thumbnail {
@@ -240,6 +247,11 @@ figcaption {
 }
 
 @media only screen and (max-width: 768px) {
+
+    html, body {
+        max-width: 100vw;
+    }
+
     .nav-menu {
         position: fixed;
         left: -100%;
@@ -253,6 +265,14 @@ figcaption {
         z-index: 7;
         box-shadow:
             0 10px 27px rgba(0, 0, 0, 0.05);
+    }
+
+    p {
+        word-wrap: break-word;
+    }
+
+    a {
+        word-wrap: break-word;
     }
 
     .post-list {
@@ -337,6 +357,10 @@ figcaption {
 
     .bar {
         background-color: rgba(211, 211, 211, 0.78);
+    }
+
+    .post-date {
+        color: rgba(211, 211, 211, 0.83);
     }
 
     .description {

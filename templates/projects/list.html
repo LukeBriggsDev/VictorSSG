@@ -9,7 +9,7 @@
                     {% if project.featured_image != "" and project.featured_image %}
                         <img class="project-thumbnail" src="{{ project.featured_image }}"  alt="{{ project.description }}" />
                     {% endif %}
-                    <h1 class="project-title">{{ project.title }}</h1>
+                    <h1 class="project-title">{{ project.title|safe }}</h1>
                     <p class="description project-description">
                         {{ project.description }}
                     </p>

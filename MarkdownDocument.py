@@ -2,7 +2,7 @@ from datetime import datetime
 import pathlib
 import mistune
 from .CONSTANTS import CONFIG
-from .MarkdownRenderer import HighlightRenderer
+from .MarkdownRenderer import HighlightRenderer, TitleRenderer
 
 class MarkdownDocument:
     """Stores content and metadata of a markdown document"""
@@ -22,7 +22,7 @@ class MarkdownDocument:
         * description
         """
         self.path = path
-        self.title = metadata["title"]
+        self.title = mistune.markdown(f"<div>{metadata['title']}</div>", escape=False)
         self.featured_image = metadata["featuredImage"]
         # Add featured image and title to top of post
         featured_image = f"<img class='post-hero' src='{self.featured_image}' alt='{self.title}'/>" if self.featured_image != "" and \

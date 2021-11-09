@@ -19,3 +19,15 @@ class HighlightRenderer(mistune.HTMLRenderer):
             formatter = html.HtmlFormatter()
             return highlight(code, lexer, formatter)
         return '<pre><code>' + mistune.escape(code) + '</code></pre>'
+
+class TitleRenderer(mistune.HTMLRenderer):
+    """Renderer to not wrap text in p tags"""
+    def block_html(self, html):
+        if not self._escape:
+            return html + '\n'
+        return mistune.escape(html) + '\n'
+
+    def block_html(self, html):
+        if not self._escape:
+            return html + '\n'
+        return '' + mistune.escape(html) + '\n'
