@@ -108,11 +108,39 @@ def build():
                     template = jinja_env.get_template("info.html")
                 dest.write(template.render(CONFIG=CONFIG, page_title=page.title(), post=document))
 
+        # Create sitemap.xml
+        with open(public_dir.joinpath("sitemap.xml"), "w") as sitemap:
+            sitemap.write("""<urlset
+xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+xmlns:xhtml="http://www.w3.org/1999/xhtml"
+>
+            """)
+
+            # Add to sitemap
+            for document in documents:
+                sitemap.write(
+                    f"""
+<url>
+    <loc>{CONFIG["base_url"]}{document.path.relative_to(public_dir)}</loc>
+    <lastmod>{datetime.now().isoformat()}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+</url>
+
+                    """)
+            # close sitemap
+            sitemap.write("</urlset>")
+
+
         # Arrange posts page
         posts = []
         for document in documents:
             if public_dir.joinpath("posts") in document.path.parents:
                 posts.append(document)
+
+            # Add to sitemap
+
+
         posts.sort(key=lambda x: datetime.timestamp(x.date), reverse=True)
 
         # Create rss feed
