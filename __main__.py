@@ -1,4 +1,5 @@
 """Main method"""
+import glob
 import math
 import socketserver
 import sys
@@ -120,7 +121,7 @@ xmlns:xhtml="http://www.w3.org/1999/xhtml">""")
                         f"""
     <url>
         <loc>{CONFIG["base_url"]}{directory.relative_to(public_dir)}/</loc>
-        <lastmod>{datetime.now().isoformat()}</lastmod>
+        <lastmod>{datetime.now().strftime('%Y-%m-%dT%H:%M:%S+00:00')}</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
     </url>
