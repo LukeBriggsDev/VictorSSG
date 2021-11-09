@@ -359,7 +359,7 @@ figcaption {
     .social-link i {
         color: rgba(211, 211, 211, 0.78);
     }
-    .social-link:hover{
+    .social-link i:hover{
         color: #46b4ff;
     }
 
