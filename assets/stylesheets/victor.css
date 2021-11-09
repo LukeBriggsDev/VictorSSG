@@ -230,6 +230,7 @@ article li li{
     height: 240px;
     object-fit: cover;
     border-radius: 16px;
+    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.1);
 }
 
 .post-hero {
@@ -296,6 +297,7 @@ figcaption {
 
     .post-thumbnail {
         height: 50%;
+
     }
 
     article {
@@ -375,6 +377,10 @@ figcaption {
 
     .post-date {
         color: rgba(211, 211, 211, 0.83);
+    }
+
+    .post-thumbnail {
+        box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.1);
     }
 
     .description {
