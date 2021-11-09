@@ -6,9 +6,22 @@ from pygments.formatters import html
 
 
 class HighlightRenderer(mistune.HTMLRenderer):
+    def link(self, link, text=None, title=None):
+        if text is None:
+            text = link
+
+        # anchor link not relative
+        if link[0] == "#":
+            return f'''<a href="javascript:;" onclick="document.location.hash='{link[1:]}';">{text}</a>'''
+
+        s = '<a href="' + self._safe_url(link) + '"'
+        if title:
+            s += ' title="' + mistune.escape_html(title) + '"'
+        return s + '>' + (text or link) + '</a>'
+
     def heading(self, text: str, level: int):
         tag = 'h' + str(level)
-        anchor = f"<a href='{text.lower().replace(' ', '-')}'></a>"
+        anchor = f"<a name='{text.lower().replace(' ', '-')}'></a>"
         return anchor + '<' + tag + '>' + text + '</' + tag + '>\n'
     def block_code(self, code, lang=None, info=None):
         if lang:

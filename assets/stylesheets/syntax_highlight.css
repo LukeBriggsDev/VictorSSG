@@ -1,3 +1,7 @@
+p code {
+    background-color: #ede9e4;
+}
+
 .highlight {
     background-color: #ede9e4;
     padding: 1rem 1rem 1rem 1rem;
@@ -76,6 +80,9 @@
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
 
 @media (prefers-color-scheme: dark) {
+    p code {
+        background-color: #202020; color: #d0d0d0;
+    }
     .highlight .hll { background-color: #404040 }
     .highlight  {
         padding: 1rem 1rem 1rem 1rem;
