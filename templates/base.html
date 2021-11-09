@@ -3,8 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width; initial-scale=1.0;">
+
+    <meta property="og:description" content="{{ CONFIG['description'] }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ CONFIG['base_url'] }}" />
+    <meta property="og:image" content="{{CONFIG['base_url']}}banner.png"/>
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image" content="{{CONFIG['base_url']}}banner.png"/>
+    <meta name="twitter:title" content="{{CONFIG['title']}}"/>
+    <meta name="twitter:description" content="{{ CONFIG['description'] }}"/>
+    <meta name="application-name" content="{{CONFIG['title']}}">
+
     <title>{% block title %}{% endblock %} - {{ CONFIG["title"] }}</title>
     <base href="{{ CONFIG['base_url'] }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="feed" type="application/rss+xml" href="index.xml" title="{{ CONFIG['title'] }}">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="assets/stylesheets/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/stylesheets/victor.css">

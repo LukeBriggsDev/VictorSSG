@@ -121,7 +121,7 @@ def build():
         fg.link(href=CONFIG["base_url"], rel='alternate')
         fg.author(name=CONFIG["name"], email=CONFIG["email"])
         fg.logo(str(public_dir.joinpath("favicon.ico")))
-        fg.subtitle(CONFIG["rssDescription"])
+        fg.subtitle(CONFIG["description"])
         fg.language("en")
 
         for post in posts:
