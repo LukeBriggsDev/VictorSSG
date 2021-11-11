@@ -41,9 +41,10 @@ def build():
     try:
 
         # Remove existing build
+        files_to_remove = glob.glob(str(public_dir.relative_to(os.getcwd()).joinpath("**")))
         if os.path.exists(public_dir):
-            shutil.rmtree(public_dir)
-            os.mkdir(public_dir)
+            for file in files_to_remove:
+                shutil.rmtree(file)
 
         # Non-empty social links
         config_links = CONFIG["index"]["socialLinks"]
