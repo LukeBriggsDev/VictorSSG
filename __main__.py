@@ -39,12 +39,14 @@ def init():
 def build():
     """Build webpage into public directory"""
     try:
-
         # Remove existing build
         files_to_remove = glob.glob(str(public_dir.relative_to(os.getcwd()).joinpath("**")))
         if os.path.exists(public_dir):
             for file in files_to_remove:
-                shutil.rmtree(file)
+                try:
+                    shutil.rmtree(file)
+                except NotADirectoryError:
+                    os.remove(file)
 
         # Non-empty social links
         config_links = CONFIG["index"]["socialLinks"]
@@ -198,8 +200,8 @@ xmlns:xhtml="http://www.w3.org/1999/xhtml">""")
     except FileNotFoundError as e:
         print(f"{e.filename} was not found, have you ran init?")
 
-    # except KeyError as e:
-    #     print(f"{e.args[0]} was not found in config, please add this field or reinitialise")
+    except KeyError as e:
+        print(f"{e.args[0]} was not found in config, please add this field or reinitialise")
 
 
 class HTTPHandler(SimpleHTTPRequestHandler):
