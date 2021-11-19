@@ -9,29 +9,29 @@ You can read more about the background of this SSG on [this post](https://www.lu
 
 ## Install
 ### From source
-Install setuptools and wheel
+- Install setuptools and wheel
 
-`python3 -m pip install setuptools wheel`
+    - `python3 -m pip install setuptools wheel`
 
-Create src directory
+- Create src directory
 
-`mkdir $HOME/src`
+    - `mkdir $HOME/src`
 
-`cd $HOME/src`
+    - `cd $HOME/src`
 
-Clone repo
+- Clone repo
 
-`git clone https://github.com/LukeBriggsDev/VictorSSG`
+    - `git clone https://github.com/LukeBriggsDev/VictorSSG`
 
-`cd VictorSSG`
+    - `cd VictorSSG`
 
-Build package
+- Build package
 
-`python3 -m build`
+    - `python3 -m build`
 
-Install package
+- Install package
 
-`python3 -m pip install dist/*.tar.gz`
+    - `python3 -m pip install dist/*.tar.gz`
 
 ### From TestPyPI
 
