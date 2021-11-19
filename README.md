@@ -34,5 +34,6 @@ You can read more about the background of this SSG on [this post](https://www.lu
     - `python3 -m pip install dist/*.tar.gz`
 
 ### From TestPyPI
+- With pip
 
-`python3 -m pip install --extra-index-url https://test.pypi.org/simple/ --index-url https://pypi.org/simple victor-ssg`
+  -  `python3 -m pip install --extra-index-url https://test.pypi.org/simple/ --index-url https://pypi.org/simple victor-ssg`
