@@ -12,6 +12,7 @@ You can read more about the background of this SSG on [this post](https://www.lu
 Install setuptools and wheel
 
 `python3 -m pip install setuptools wheel`
+
 Create src directory
 
 `mkdir $HOME/src`
