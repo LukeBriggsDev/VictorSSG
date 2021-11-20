@@ -97,7 +97,7 @@ xmlns:xhtml="http://www.w3.org/1999/xhtml">""")
                     template = jinja_env.get_template("posts/post.html")
                 else:
                     template = jinja_env.get_template("info.html")
-                dest.write(template.render(CONFIG=CONFIG, page_title=page.title, post=document))
+                dest.write(template.render(CONFIG=CONFIG, page_title=metadata["title"], post=document))
 
                 # Add to sitemap
                 with open(public_dir.joinpath("sitemap.xml"), "a") as sitemap:
