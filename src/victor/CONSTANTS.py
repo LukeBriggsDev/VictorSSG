@@ -1,7 +1,8 @@
 import os
-import yaml
 import pathlib
+
 import regex as re
+import yaml
 from jinja2 import Environment, PackageLoader, select_autoescape
 
 # Directories

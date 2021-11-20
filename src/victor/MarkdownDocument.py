@@ -1,8 +1,10 @@
-from datetime import datetime
 import pathlib
+from datetime import datetime
+
 import mistune
-from .CONSTANTS import CONFIG
-from .MarkdownRenderer import HighlightRenderer, TitleRenderer
+
+from .MarkdownRenderer import HighlightRenderer
+
 
 class MarkdownDocument:
     """Stores content and metadata of a markdown document"""
