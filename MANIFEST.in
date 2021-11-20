@@ -1,0 +1,5 @@
+include src/victor/templates/**/*.html
+recursive-include src/victor/assets *
+recursive-include src/victor/proto *
+recursive-include src/victor/social *
+recursive-exclude **/__pycache__ *
