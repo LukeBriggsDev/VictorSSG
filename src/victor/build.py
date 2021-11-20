@@ -147,13 +147,15 @@ xmlns:xhtml="http://www.w3.org/1999/xhtml">""")
 
         # Render post pages
         with open(public_dir.joinpath("posts/index.html"), "w") as post_page:
+            next_page = f"posts/1" if 1 < math.ceil(len(posts) / 16) else None
             post_page.write(jinja_env.get_template("posts/list.html").render(CONFIG=CONFIG, page_title="Posts",
                                                                              posts=posts[:16], public_dir=public_dir,
-                                                                             next_page="posts/1", prev_page=None))
+                                                                             next_page=next_page, prev_page=None))
 
+        # Creat 'next' amd 'previous' links
         for i in range(math.ceil(len(posts) / 16)):
             page = public_dir.joinpath(f"posts/{i}")
-            next_page  = f"posts/{i + 1}" if (i + 1) < math.ceil(len(posts) / 16) else None
+            next_page = f"posts/{i + 1}" if (i + 1) < math.ceil(len(posts) / 16) else None
             prev_page = f"posts/{i - 1}" if (i - 1) >= 0 else None
             os.makedirs(page)
             with open(page.joinpath("index.html"), "w") as project_page:
