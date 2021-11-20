@@ -2,11 +2,14 @@ import os
 import pathlib
 import shutil
 import sys
+# required for datetime inclusion in markdown template
+from datetime import datetime
+
 
 import regex as re
 
-from .CONSTANTS.directories import content_dir, archetypes_dir, eval_re
-from .CONSTANTS.regex import code_re, header_re
+from .CONSTANTS.directories import content_dir, archetypes_dir
+from .CONSTANTS.regex import code_re, header_re, eval_re
 
 
 def new():
