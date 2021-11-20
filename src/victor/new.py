@@ -5,8 +5,8 @@ import sys
 
 import regex as re
 
-from .CONSTANTS import content_dir, archetypes_dir, eval_re, \
-    code_re, header_re
+from .CONSTANTS.directories import content_dir, archetypes_dir, eval_re
+from .CONSTANTS.regex import code_re, header_re
 
 
 def new():

@@ -1,7 +1,7 @@
 import os
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 
-from .CONSTANTS import CONFIG
+from .CONSTANTS.config import CONFIG
 
 
 class HTTPHandler(SimpleHTTPRequestHandler):

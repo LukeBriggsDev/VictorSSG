@@ -9,7 +9,10 @@ import regex as re
 import yaml
 from feedgen.feed import FeedGenerator
 
-from .CONSTANTS import content_dir, static_dir, jinja_env, public_dir, CONFIG, yaml_re, header_re
+from .CONSTANTS.directories import content_dir, static_dir, public_dir
+from .CONSTANTS.environment import jinja_env
+from .CONSTANTS.config import CONFIG
+from .CONSTANTS.regex import yaml_re, header_re
 from .MarkdownDocument import MarkdownDocument
 from .social.social import DefaultSites, SocialLink
 

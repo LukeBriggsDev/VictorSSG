@@ -1,7 +1,7 @@
 import os
 import shutil
 
-from .CONSTANTS import content_dir, static_dir, public_dir, archetypes_dir
+from .CONSTANTS.directories import content_dir, static_dir, public_dir, archetypes_dir
 
 
 def init():
