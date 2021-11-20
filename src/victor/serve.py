@@ -17,7 +17,11 @@ def serve():
     """Run basic web server in directory"""
     # set port
     if len(sys.argv) > 2:
-        port = sys.argv[2]
+        try:
+            port = int(sys.argv[2])
+        except:
+            print("Incorrect value for port")
+            exit(1)
     else:
         port = 8000
     server_address = ('', port)
