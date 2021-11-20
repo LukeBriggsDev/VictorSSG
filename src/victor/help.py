@@ -4,7 +4,7 @@ def help():
         "help": "display this message",
         "init": "initialise directory for victor project",
         "build": "build directory",
-        "serve": "start basic web server",
+        "serve [PORT]": "start basic web server at port, default is 8000",
         "new FILE": "create a new file with content of archetype"
     }
     print("Available commands:")
