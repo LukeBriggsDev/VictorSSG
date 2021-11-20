@@ -20,3 +20,4 @@ elif sys.argv[1] == "new":
 
 else:
     from .help import help
+    help()
