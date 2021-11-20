@@ -17,3 +17,6 @@ elif sys.argv[1] == "serve":
 elif sys.argv[1] == "new":
     from .new import new
     new()
+
+else:
+    from .help import help
