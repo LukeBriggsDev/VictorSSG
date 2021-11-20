@@ -79,7 +79,7 @@ xmlns:xhtml="http://www.w3.org/1999/xhtml">""")
             directory = public_dir.joinpath(file.relative_to(content_dir).parent.joinpath(page))
             os.makedirs(directory, exist_ok=True)
             # Copy original file to be accessed at index.md
-            shutil.copy(file, directory)
+            shutil.copy(file, os.path.join(directory, "index.md"))
             # Export file
             html_export = directory.joinpath("index.html")
             # Convert markdown (without yaml header) to html
