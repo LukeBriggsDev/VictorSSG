@@ -43,6 +43,11 @@ class MarkdownDocument:
             self.date = datetime.now()
 
         try:
+            self.include_in_sitemap = metadata["includeInSitemap"]
+        except:
+            self.include_in_sitemap = True
+
+        try:
             self.rss_full_text = metadata["rssFullText"]
         except KeyError:
             self.rss_full_text = True

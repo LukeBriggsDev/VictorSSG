@@ -112,6 +112,10 @@ Also appears at the top of any post or project page. Any relative urls are relat
 `description` - A description of the post or project. Used underneath the title in the projects or posts pages,
 If a value is missing then a 280 character excerpt is used instead
 
+##### Other options
+
+`includeInSitemap` - By default this is true, setting this to `false` will not include that pag in the sitemap in the built site.
+
 ##### Python Templating
 You can include python in these archetypes that is ran upon file creation by placing it within jinja style braces:
 
