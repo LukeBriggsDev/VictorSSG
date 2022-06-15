@@ -7,10 +7,20 @@
 {% endblock %}
 
 {% block content %}
+<style>
+    .description {
+        margin-top: -0.5rem;
+    }
+    @media only screen and (max-width: 768px) {
+        .description {
+            margin-top: 0.5rem
+        }
+    }
+</style>
 <div class="center_container">
     <div class="center-block">
         <h1 class="site-title">{{ CONFIG["title"] }}</h1>
-        <p class="description" style="margin-top: -0.5rem">{{ CONFIG["subtitle"]|safe }}</p>
+        <p class="description">{{ CONFIG["subtitle"]|safe }}</p>
         <ul class="social-link-container">
             {% for link in social_links %}
                 <li class="social-link"><a href="https://{{ link.link }}" aria-label="{{ link.site.url }}"><i class="fa {{ link.site.logo }}"></i></a></li>
