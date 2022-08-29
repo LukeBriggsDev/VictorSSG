@@ -33,7 +33,7 @@ class MarkdownDocument:
         self.html = featured_image + f"<h1 class='post-title'>{self.title}</h1>" + \
                     mistune.markdown(self.markdown,
                                      renderer=HighlightRenderer(escape=False),
-                                     plugins=["url"])
+                                     plugins=["url", "table"])
         self.author = metadata["author"]
         excerpt_length = 280 if len(self.markdown) > 280 else len(self.markdown)
         self.excerpt = ''.join([char for char in self.markdown[:excerpt_length] if char.isalnum() or char in "\"\'“” .,!?:;()[]/-\r\n"]) + "..."
