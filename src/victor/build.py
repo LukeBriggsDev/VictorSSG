@@ -137,7 +137,7 @@ xmlns:xhtml="http://www.w3.org/1999/xhtml">""")
         for post in posts:
             fe = fg.add_entry()
             fe.id = CONFIG["base_url"] + str(post.path.relative_to(public_dir))
-            fe.link(href=CONFIG["base_url"] + str(post.path.relative_to(public_dir)))
+            fe.link(href=CONFIG["base_url"] + str(post.path.relative_to(public_dir).parent))
             # Remove html tags
             fe.title(title=re.sub('<[^<]+?>', '', post.title))
             fe.description(post.html if post.rss_full_text else post.description)
